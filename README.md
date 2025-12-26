@@ -41,6 +41,8 @@
     - Para interactuar con nuestra base de datos podemos hacerlos por medio de un _ORM_.
     - Un _ORM_ tiene todos los métodos para: **crear, obtener, actualizar, eliminar** datos de nuestra base de datos.
   - Express
+    - **_npm i express_**
+    - **_npm i -D @types/express_**
     - Infraestructura _web_ rápida, minimalista y flexible para _Node.js_.
     - A diferencia de _Rails o Laravel_ no tiene un sistema de vistas definido, tampoco _ORM_ o _Autenticación_; sino que te deja mucha parte de la configuración en tus manos.
     - Ideal para utilizarse en aplicaciones _web_ monolíticas o como _API_.
@@ -119,3 +121,24 @@
 - _Full Stack_ quiere decir que puedes crear el _Stack_ completo de una _App_ y _PERN STACK_ te permite hacerlo.
 - _React_ en el _FRONT_ y _Node_ en el _backend_ son una combinación muy común.
 - Puede utilizar _React_ con _Backends_ de _Django, Rails, Laravel_.
+- Debemos crear el archivo:
+  - **tsconfig.json**
+- Dentro agregamos lo siguiente:
+  - ```
+    {
+      "compilerOptions": {
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "lib": ["esnext"],
+        "strict": false,
+        "sourceMap": true,
+        "esModuleInterop": true,
+        "declaration": true,
+      },
+      "include": ["src/**/*.ts"]
+    }
+  ```
+- Y debemos ejecutar:
+  - **_npx tsc_**
+- Esto para que _NODE y EXPRESS_, pueden leer los archivos: **.ts** y los compilen a **.js**, con esta configuración.
+-
