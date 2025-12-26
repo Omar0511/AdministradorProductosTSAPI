@@ -63,6 +63,8 @@
           "dev": "nodemon --exec tsx src/index.ts"
         },
       ```
+    - Ejecutamos:
+      - **_npm run dev_**
     - Entorno de ejecución en _JavaScript_ que se ejecuta en el servidor.
     - Entre sus ventajas se encuentra la gran cantidad de librerías disponibles para integrarlas en proyectos con _NPM_.
     - Puede consultar base de datos, autenticar usuarios, manejar rutas y mucho más...
