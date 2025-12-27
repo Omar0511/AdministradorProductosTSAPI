@@ -82,6 +82,7 @@
   - Sequelize
     - **_npm install --save sequelize_**
     - **_npm install --save pg pg-hstore_**
+    - **_npm i sequelize-typescript_**
     - _https://sequelize.org/docs/v6/getting-started/_
     - Soporta _TypeScript_ y diferentes bases de datos.
     - _Oracle, Postgres, MySQL, MariaDB, SQLite, SQL SERVER_.

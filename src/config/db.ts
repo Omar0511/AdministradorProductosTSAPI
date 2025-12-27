@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
-import { Sequelize } from "sequelize";
+// import { Sequelize } from "sequelize";
+import { Sequelize } from "sequelize-typescript";
 
 dotenv.config();
 // console.log(process.env.DATABASE_URL);
@@ -20,6 +21,8 @@ dotenv.config();
 // );
 
 // El signo de exclamación le dice a TypeScript que confíe en que esta variable de entorno estará definida
-const db = new Sequelize(process.env.DATABASE_URL!);
+const db = new Sequelize(process.env.DATABASE_URL!, {
+  models: [__dirname + '/../models/**/*.ts'], // Ruta a los modelos
+});
 
 export default db;
