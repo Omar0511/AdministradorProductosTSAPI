@@ -181,4 +181,12 @@
   - Prisma
   - Sequelize
   - TypeORM
--
+
+## MIDDLEWARE
+
+- En _Node.js_, el _middleware_ se refiere a un tipo de _software_ intermedio que se utiliza para procesar las solicitudes _HTTP_ que llegan a una aplicación _web_ antes de ser manejadas por la función de enrutamiento principal.
+- Los _middleware_ son funciones que se ejecutan en el medio del flujo de solicitud y respuesta de una aplicación _web_ y pueden realizar diversas tareas, como autenticación, validación de datos, registro de solicitudes, compresión de respuestas, entre otras.
+- Son esencials para la creación de aplicaciones _web_ robustas y flexibles.
+- Cada solicitud _HTTP_ pasa a través de una serie de _middleware_ antes de llegar a la función de controlador que maneja la solicitud final.
+- Esto permite modularizar y organizar el código de manera efectiva, ya que puedes agregar o quitar _middleware_ según las necesidades de tu aplicación.
+

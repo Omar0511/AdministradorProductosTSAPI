@@ -31,19 +31,18 @@ export const createProduct = async (req: Request, res: Response) => {
   //   .withMessage("El precio debe ser mayor que cero")
   //   .run(req);
 
-  let errors = validationResult(req);
-
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
-  }
-
-  const product = await Product.create(req.body);
-
   // Almacenar en la BD
   // await product.save();
 
   // res.json("Crear un producto");
-  res.json({
-    data: product,
-  });
+
+  try {
+    const product = await Product.create(req.body);
+
+    res.json({
+      data: product,
+    });
+  } catch (error) {
+    console.log(colors.bgRed.white(`Error al crear el producto: ${error}`));
+  }
 };
