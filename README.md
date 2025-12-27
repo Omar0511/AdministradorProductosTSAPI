@@ -95,6 +95,8 @@
   - Variables de entorno.
 - Colores para mensajes de CONSOLA
   - **_npm i colors_**
+- Validaciones - Express Validator
+  - **_npm i express-validator_**
 
 ### REST API
 
