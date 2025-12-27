@@ -89,6 +89,9 @@
 - Render
   - _https://dashboard.render.com/_
   - Es donde creamos la **Base de datos**.
+- DOTENV
+  - **_npm i dotenv_**
+  - Variables de entorno.
 
 
 ### REST API
