@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createProduct, getProductById, getProducts } from "./handlers/product";
+import { createProduct, getProductById, getProducts, updateProducts } from "./handlers/product";
 import { body, check, param, validationResult } from "express-validator";
 import { handleInputErrors } from "./middleware";
 
@@ -48,9 +48,24 @@ router.post(
   createProduct
 );
 
-router.put("/", (req, res) => {
-  res.json("Desde PUT");
-});
+router.put(
+  "/:id",
+  body("name")
+    .notEmpty()
+    .withMessage("El nombre es obligatorio"),
+  body("price")
+    .isNumeric()
+    .withMessage("El precio debe ser un número")
+    .notEmpty()
+    .withMessage("El precio es obligatorio")
+    .custom((value) => value > 0)
+    .withMessage("El precio debe ser mayor que cero"),
+  body('availability')
+    .isBoolean()
+    .withMessage("Valor para disponibilidad no válido"),
+  handleInputErrors,
+  updateProducts
+);
 
 router.patch("/", (req, res) => {
   res.json("Desde PATCH");

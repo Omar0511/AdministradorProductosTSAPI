@@ -39,7 +39,9 @@ export const getProductById = async (req: Request, res: Response) => {
       data: product,
     });
   } catch (error) {
-    console.log(colors.bgRed.white(`Error al obtener los productos por ID: ${error}`));
+    console.log(
+      colors.bgRed.white(`Error al obtener los productos por ID: ${error}`)
+    );
   }
 };
 
@@ -85,4 +87,27 @@ export const createProduct = async (req: Request, res: Response) => {
   } catch (error) {
     console.log(colors.bgRed.white(`Error al crear el producto: ${error}`));
   }
+};
+
+export const updateProducts = async (req: Request, res: Response) => {
+  // res.json("Desde PUT");
+
+  const { id } = req.params;
+  const product = await Product.findByPk(id);
+
+  if (!product) {
+    return res.status(404).json({
+      message: "Producto no encontrado",
+    });
+  }
+
+  // Actualizar producto
+  // console.log(colors.yellow(req.body));
+
+  await product.update(req.body);
+  await product.save();
+
+  res.json({
+    data: product,
+  });
 };
