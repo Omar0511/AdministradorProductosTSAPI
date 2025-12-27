@@ -16,18 +16,20 @@ export const createProduct = async (req: Request, res: Response) => {
   // await check('price', 'El precio debe ser un número').isNumeric().run(req);
   // await check('category', 'La categoría es obligatoria').not().isEmpty().run(req);
 
-  await check("name")
-    .notEmpty()
-    .withMessage("El nombre es obligatorio")
-    .run(req);
-  await check("price")
-    .isNumeric()
-    .withMessage("El precio debe ser un número")
-    .notEmpty()
-    .withMessage("El precio es obligatorio")
-    .custom((value) => value > 0)
-    .withMessage("El precio debe ser mayor que cero")
-    .run(req);
+  // Este código lo movimos a: src/router.ts, para validar de otra forma en ese archivo
+  // check: se usa en funciones asíncronas como middlewares, en el otro archivo usamos body para funciones no asíncronas
+  // await check("name")
+  //   .notEmpty()
+  //   .withMessage("El nombre es obligatorio")
+  //   .run(req);
+  // await check("price")
+  //   .isNumeric()
+  //   .withMessage("El precio debe ser un número")
+  //   .notEmpty()
+  //   .withMessage("El precio es obligatorio")
+  //   .custom((value) => value > 0)
+  //   .withMessage("El precio debe ser mayor que cero")
+  //   .run(req);
 
   let errors = validationResult(req);
 

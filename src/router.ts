@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { createProduct } from "./handlers/product";
+import { body, check, validationResult } from "express-validator";
 
 const router = Router();
 
@@ -15,7 +16,21 @@ router.get("/", (req, res) => {
 //   res.json("Desde POST");
 // });
 
-router.post("/", createProduct);
+// Body se utiliza para enviar datos al servidor en funciones que no son asíncronas
+router.post(
+  "/",
+  body("name")
+    .notEmpty()
+    .withMessage("El nombre es obligatorio"),
+  body("price")
+    .isNumeric()
+    .withMessage("El precio debe ser un número")
+    .notEmpty()
+    .withMessage("El precio es obligatorio")
+    .custom((value) => value > 0)
+    .withMessage("El precio debe ser mayor que cero"),
+  createProduct
+);
 
 router.put("/", (req, res) => {
   res.json("Desde PUT");
