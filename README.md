@@ -200,3 +200,21 @@
 - Cada solicitud _HTTP_ pasa a través de una serie de _middleware_ antes de llegar a la función de controlador que maneja la solicitud final.
 - Esto permite modularizar y organizar el código de manera efectiva, ya que puedes agregar o quitar _middleware_ según las necesidades de tu aplicación.
 
+### TESTING
+
+- Escribir _Testing_ para nuestras _API'S_ no es muy diferente que aplicar _testing_ a aplicaciones en _React_.
+- No porque nuestra _API_ este hecha con _TypeScript_ significa que no vamos a añadir pruebas.
+- Las pruebas siempre deben estar ahí y en muchos trabajos tu código debe ir acompañado por una serie de _tests_.
+  - #### TIPOS
+  - **Unit Testing**
+    - Verificar que partes individuales en nuestro código funcionen; tales como crear el servidor, visitar una ruta, debemos revisar que cada pieza funcione como esperamos antes de integrarla con otras.
+    - **Integrtion Testing**
+      - Una vez que revisamos que algunas piezas de código funcionen por sí solas, es momento de revisar cuando 2 o más se unen, tales como visitar una ruta y obtener datos o enviar una petición _post_, validar, y entonces crear el producto.
+  - #### HERRAMIENTAS
+    - **JEST**
+      - Es uno de los _frameworks_ para aplicar _testing_ más conocidos hoy en día, funciona con _TypeScript, Node.js, React, Angular, Vue.js_.
+      - La configuración es muy simple, los _test_ corren aparte y no se mezclan con el código existente.
+    **SUPERTEST**
+      - _Jest_ nos da una serie de funciones para probar el código, pero con _supertest_ podremos realizar peticiones hacia nuestra _API_ y revisar que el código funcione como esperamos.
+      - Con _Supertest_ podemos realizar pruebas de integración entre las _URL'S_ de nuestra _API_ y el _ORM_.
+
