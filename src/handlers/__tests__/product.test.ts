@@ -217,5 +217,8 @@ describe("DELETE /api/products/:id", () => {
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty("data");
     expect(response.body.data).toBe("Producto eliminado correctamente");
+
+    expect(response.status).not.toBe(400);
+    expect(response.status).not.toBe(404);
   });
 });
