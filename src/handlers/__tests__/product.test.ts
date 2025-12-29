@@ -162,11 +162,13 @@ describe("PUT /api/products/:id", () => {
 
   it("should return a 404 response for a non-existent product", async () => {
     const productId = 2000;
-    const response = await request(server).put(`/api/products/${productId}`).send({
-      name: "Monitor Curvo",
-      availability: true,
-      price: 300,
-    });
+    const response = await request(server)
+      .put(`/api/products/${productId}`)
+      .send({
+        name: "Monitor Curvo",
+        availability: true,
+        price: 300,
+      });
 
     expect(response.status).toBe(404);
     expect(response.body).toHaveProperty("message");
@@ -177,7 +179,7 @@ describe("PUT /api/products/:id", () => {
   });
 
   it("should update an existing product with a valid data", async () => {
-    const response = await request(server).put('/api/products/1').send({
+    const response = await request(server).put("/api/products/1").send({
       name: "Monitor Curvo",
       availability: true,
       price: 300,
@@ -191,10 +193,45 @@ describe("PUT /api/products/:id", () => {
   });
 });
 
+describe("PATCH /api/products/:id", () => {
+  it("should return 404 for non-existing product", async () => {
+    const productId = 2000;
+    const response = await request(server)
+      .patch(`/api/products/${productId}`)
+      .send();
+    
+    expect(response.status).toBe(404);
+    expect(response.body.message).toBe("Producto no encontrado");
+    expect(response.status).not.toBe(200);
+  });
+
+  it("should check a valid ID", async () => {
+    const response = await request(server)
+      .patch("/api/products/not-valid-url")
+      .send();
+    expect(response.status).toBe(400);
+    expect(response.body).toHaveProperty("errors");
+    expect(response.body.errors).toHaveLength(1);
+    expect(response.body.errors[0].msg).toBe("El ID debe ser un número");
+  });
+
+  it("should update the availability of an existing product", async () => {
+    const response = await request(server).patch("/api/products/1").send();
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty("data");
+    expect(response.body.data).toHaveProperty("availability");
+    expect(typeof response.body.data.availability).toBe("boolean");
+
+    expect(response.status).not.toBe(400);
+    expect(response.status).not.toBe(404);
+  });
+});
 
 describe("DELETE /api/products/:id", () => {
   it("should check a valid ID", async () => {
-    const response = await request(server).delete("/api/products/not-valid-url");
+    const response = await request(server).delete(
+      "/api/products/not-valid-url"
+    );
 
     expect(response.status).toBe(400);
     expect(response.body).toHaveProperty("errors");
