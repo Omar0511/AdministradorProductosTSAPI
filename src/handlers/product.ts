@@ -6,43 +6,31 @@ import { check, validationResult } from "express-validator";
 export const getProducts = async (req: Request, res: Response) => {
   // res.json("Desde GET");
 
-  try {
-    const products = await Product.findAll({
-      order: [["createdAt", "DESC"]],
-      // limit: 10,
-      // atrtributes: omite ciertas columnas
-      // attributes: {exlude: ['id', 'availability', 'createdAt', 'updatedAt']}
-    });
+  const products = await Product.findAll({
+    order: [["createdAt", "DESC"]],
+    // limit: 10,
+    // atrtributes: omite ciertas columnas
+    // attributes: {exlude: ['id', 'availability', 'createdAt', 'updatedAt']}
+  });
 
-    res.json({
-      data: products,
-    });
-  } catch (error) {
-    console.log(colors.bgRed.white(`Error al obtener los productos: ${error}`));
-  }
+  res.json({
+    data: products,
+  });
 };
 
 export const getProductById = async (req: Request, res: Response) => {
-  try {
-    // console.log(colors.cyan(`ID recibido: ${req.params.id}`));
+  const { id } = req.params;
+  const product = await Product.findByPk(id);
 
-    const { id } = req.params;
-    const product = await Product.findByPk(id);
-
-    if (!product) {
-      return res.status(404).json({
-        message: "Producto no encontrado",
-      });
-    }
-
-    res.json({
-      data: product,
+  if (!product) {
+    return res.status(404).json({
+      message: "Producto no encontrado",
     });
-  } catch (error) {
-    console.log(
-      colors.bgRed.white(`Error al obtener los productos por ID: ${error}`)
-    );
   }
+
+  res.json({
+    data: product,
+  });
 };
 
 export const createProduct = async (req: Request, res: Response) => {
@@ -78,15 +66,11 @@ export const createProduct = async (req: Request, res: Response) => {
 
   // res.json("Crear un producto");
 
-  try {
-    const product = await Product.create(req.body);
+  const product = await Product.create(req.body);
 
-    res.status(201).json({
-      data: product,
-    });
-  } catch (error) {
-    console.log(colors.bgRed.white(`Error al crear el producto: ${error}`));
-  }
+  res.status(201).json({
+    data: product,
+  });
 };
 
 export const updateProducts = async (req: Request, res: Response) => {

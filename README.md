@@ -244,3 +244,14 @@
 
   - _https://developer.mozilla.org/es/docs/Web/HTTP/Reference/Status_
 
+#### CODE COVERAGE
+
+- Cobertura de código, es una métrica utilizada para mediar la cantidad de código fuente que ha sido ejecutado o cubierto por un conjunto de pruebas.
+- En otras palabras, mide qué porcentaje del código de un programa ha sido probado.
+- Cuanto mayor sea la cobertura de código, más exhaustivas son las pruebas, lo que a menudo se considera un indicador positivo de la calidad del software.
+- ## Métricas
+  - < 60%: No es suficiente.
+  - 60% - 80%: Se puede mejorar.
+  - >= 80%: Es suficiente y una buena medida.
+  - 100%: Poco probable.
+-
