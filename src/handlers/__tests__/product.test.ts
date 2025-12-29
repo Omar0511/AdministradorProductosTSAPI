@@ -209,6 +209,7 @@ describe("PATCH /api/products/:id", () => {
     const response = await request(server)
       .patch("/api/products/not-valid-url")
       .send();
+    
     expect(response.status).toBe(400);
     expect(response.body).toHaveProperty("errors");
     expect(response.body.errors).toHaveLength(1);
@@ -217,6 +218,7 @@ describe("PATCH /api/products/:id", () => {
 
   it("should update the availability of an existing product", async () => {
     const response = await request(server).patch("/api/products/1").send();
+
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty("data");
     expect(response.body.data).toHaveProperty("availability");
