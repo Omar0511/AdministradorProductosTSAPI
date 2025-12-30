@@ -97,6 +97,9 @@
   - **_npm i colors_**
 - Validaciones - Express Validator
   - **_npm i express-validator_**
+- SWAGGER - Documentación _APIS_
+  - **_npm i swagger-jsdoc swagger-ui-express_**
+  - **_npm i -D @types/swagger-jsdoc @types/swagger-ui-express_**
 
 ### REST API
 
@@ -263,3 +266,6 @@
 - La principal razón de porque documentar una _API_ es para que sea utilizada de forma correcta.
 - Otra razón es para tener mayor adopción, una buena documentación hará que sea claro que funcionalidad hay disponible y los usuarios podrán sacar máximo provecho.
 - Redu ce costos de soporte.
+- ## SWAGGER
+  - **_npm i swagger-jsdoc swagger-ui-express_**
+  - **_npm i -D @types/swagger-jsdoc @types/swagger-ui-express_**
