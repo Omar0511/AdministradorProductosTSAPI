@@ -255,6 +255,28 @@ router.patch(
   updateAvailability
 );
 
+/**
+ * @swagger
+ * /api/products/{id}:
+ *   delete:
+ *    summary: Elimina un producto existente
+ *    tags:
+ *      - Products
+ *    description: Elimina un producto existente usando su ID
+ *    parameters:
+ *     - in: path
+ *       name: id
+ *       description: ID del producto
+ *       required: true
+ *       schema:
+ *        type: integer
+ *    responses:
+ *      200:
+ *        description: Producto eliminado correctamente
+ *      404:
+ *        description: Producto no encontrado
+ */
+
 router.delete(
   "/:id",
   param("id").isInt().withMessage("El ID debe ser un número"),
