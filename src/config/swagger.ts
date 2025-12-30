@@ -7,6 +7,10 @@ const options: swaggerJSDoc.Options = {
       {
         name: "Products",
         description: "Operations related to products"
+      },
+      {
+        name: "Auth",
+        description: "Operations related to authentication"
       }
     ],
     info: {

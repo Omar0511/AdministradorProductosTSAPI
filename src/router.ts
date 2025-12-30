@@ -34,7 +34,7 @@ const router = Router();
  *      type: boolean
  *      description: Disponibilidad del producto
  *      example: true
-*/
+ */
 
 // Routing - req: es lo que recibe el servidor o lo que tu estas enviando, res: es lo que el servidor responde
 // router.get("/", (req, res) => {
@@ -43,6 +43,25 @@ const router = Router();
 
 //   res.json("Desde GET");
 // });
+
+/**
+ * @swagger
+ * /api/products:
+ *   get:
+ *     summary: Obtiene todos los productos
+ *     tags:
+ *       - Products
+ *     description: Lista de productos
+ *     responses:
+ *       200:
+ *         description: Lista de productos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Product'
+ */
 
 router.get("/", getProducts);
 
