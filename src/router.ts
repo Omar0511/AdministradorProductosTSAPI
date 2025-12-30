@@ -210,6 +210,44 @@ router.put(
   updateProducts
 );
 
+/**
+ * @swagger
+ * /api/products/{id}:
+ *   patch:
+ *    summary: Actualiza la disponibilidad de un producto existente
+ *    tags:
+ *      - Products
+ *    description: Actualiza la disponibilidad de un producto existente usando su ID
+ *    parameters:
+ *     - in: path
+ *       name: id
+ *       description: ID del producto
+ *       required: true
+ *       schema:
+ *        type: integer
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            properties:
+ *              availability:
+ *                type: boolean
+ *                example: true
+ *    responses:
+ *      200:
+ *        description: Producto actualizado correctamente
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/Product'
+ *      404:
+ *        description: Producto no encontrado
+ *      400:
+ *        description: Solicitud inválida
+ */
+
 router.patch(
   "/:id",
   param("id").isInt().withMessage("El ID debe ser un número"),
