@@ -104,6 +104,35 @@ router.get(
 //   res.json("Desde POST");
 // });
 
+/**
+ * @swagger
+ * /api/products:
+ *   post:
+ *     summary: Crea un nuevo producto
+ *     tags:
+ *       - Products
+ *     description: Crea un nuevo producto con el nombre y precio proporcionados
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 example: Monitor 24 pulgadas
+ *               price:
+ *                 type: number
+ *                 example: 3000.50
+ *     responses:
+ *       201:
+ *         description: Producto creado correctamente
+ *       400:
+ *         description: Solicitud inválida
+ */
+
+
 // Body se utiliza para enviar datos al servidor en funciones que no son asíncronas
 router.post(
   "/",
