@@ -65,6 +65,34 @@ const router = Router();
 
 router.get("/", getProducts);
 
+/**
+ * @swagger
+ * /api/products/{id}:
+ *   get:
+ *    summary: Obtiene un producto por ID
+ *    tags:
+ *     - Products
+ *    description: Obtiene un producto específico usando su ID
+ *    parameters:
+ *     - in: path
+ *       name: id
+ *       description: ID del producto
+ *       required: true
+ *       schema:
+ *        type: integer
+ *    responses:
+ *     200:
+ *      description: Detalles del producto
+ *      content:
+ *        application/json:
+ *          schema:
+ *            $ref: '#/components/schemas/Product'
+ *    404:
+ *     description: Producto no encontrado
+ *    400:
+ *     description: Solicitud inválida
+ */
+
 router.get(
   "/:id",
   param("id").isInt().withMessage("El ID debe ser un número"),
