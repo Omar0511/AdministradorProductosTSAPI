@@ -100,6 +100,9 @@
 - SWAGGER - Documentación _APIS_
   - **_npm i swagger-jsdoc swagger-ui-express_**
   - **_npm i -D @types/swagger-jsdoc @types/swagger-ui-express_**
+- CORS
+  - **_npm i cors_**
+  - **_npm i -D @types/cors_**
 
 ### REST API
 
