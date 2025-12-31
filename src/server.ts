@@ -32,23 +32,52 @@ const server = express();
 // });
 
 // // Permitir conexiones
-// const corsOptions: CorsOptions = {
-//   origin: function (origin, callback) {
-//     console.log(`Origin: ${origin}`);
+const corsOptions: CorsOptions = {
+  origin: function (origin, callback) {
+    console.log(`Origin: ${origin}`);
     
-//     if (origin === process.env.FRONTEND_URL) {
-//       // console.log("Permitir...");)
+    if (origin === process.env.FRONTEND_URL) {
+      // console.log("Permitir...");
 
-//       callback(null, true); // permitir todos
-//     } else {
-//       // console.log("Denegar...");
+      callback(null, true); // permitir todos
+    } else {
+      // console.log("Denegar...");
 
-//       callback(new Error('Error de CORS'));
+      callback(new Error('Error de CORS'));
+    }
+
+  }
+};
+
+server.use(cors(corsOptions));
+
+
+// const corsOptions: CorsOptions = {
+//   origin: (origin, callback) => {
+//     console.log("Origin:", origin);
+
+//     if (!origin) {
+//       return callback(null, true); // OPTIONS, Postman
 //     }
-//   }
+
+//     if (origin === process.env.FRONTEND_URL) {
+//       return callback(null, true);
+//     }
+
+//     callback(new Error("Not allowed by CORS"));
+//   },
 // };
 
-// server.use(cors(corsOptions));
+// server.use(cors(corsOptions)); // ✅ suficiente
+// server.use(express.json());
+
+// 🔥 CORS SIEMPRE PRIMERO
+// server.use(cors());
+
+// 🔥 Responder preflight explícitamente
+// server.options("*", cors());
+
+server.use(cors());
 
 // Leer datos de FORMULARIOS - Middlewares
 server.use(express.json());
@@ -61,5 +90,6 @@ server.use('/api/products', router);
 
 // Docs
 server.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, swaggerUiOptions));
+
 
 export default server;
