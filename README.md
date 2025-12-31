@@ -103,6 +103,10 @@
 - CORS
   - **_npm i cors_**
   - **_npm i -D @types/cors_**
+- MORGAN
+  - **_npm i morgan_**
+  - **_npm i --save-dev @types/morgan_**
+  - Es un _middleware_ que va loguear todas las peticiones.
 
 ### REST API
 

@@ -5,6 +5,7 @@ import colors from 'colors';
 import swaggerUi from 'swagger-ui-express';
 import swaggerSpec, { swaggerUiOptions } from './config/swagger';
 import cors, { CorsOptions } from 'cors';
+import morgan from 'morgan';
 
 // Conectar a BD
 export async function connectDB() {
@@ -21,15 +22,6 @@ connectDB();
 
 // Instancia de express
 const server = express();
-
-// 🔐 Content Security Policy (GLOBAL)
-// server.use((req, res, next) => {
-//   res.setHeader(
-//     "Content-Security-Policy",
-//     "default-src 'self'; img-src 'self'"
-//   );
-//   next();
-// });
 
 // // Permitir conexiones
 const corsOptions: CorsOptions = {
@@ -81,6 +73,8 @@ server.use(cors());
 
 // Leer datos de FORMULARIOS - Middlewares
 server.use(express.json());
+
+server.use(morgan('dev'));
 
 server.use('/api/products', router);
 
